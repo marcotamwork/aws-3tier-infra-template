@@ -89,42 +89,42 @@ variable "mongodbatlas_project_name" {
 variable "mongodbatlas_environment" {
   type        = string
   description = "The environment to be built"
-  default = "sit"
+  default     = "sit"
 }
 
 # Cluster Instance Size Name
 variable "mongodbatlas_cluster_instance_size_name" {
   type        = string
   description = "Cluster instance size name"
-  default = "M0"
+  default     = "M0"
 }
 
 # Cloud Provider to Host Atlas Cluster
 variable "mongodbatlas_cloud_provider" {
   type        = string
   description = "AWS or GCP or Azure"
-  default = "AWS"
+  default     = "AWS"
 }
 
 # Atlas Region
 variable "mongodbatlas_region" {
   type        = string
   description = "Atlas region where resources will be created"
-  default = "ap_northeast_1"
+  default     = "ap_northeast_1"
 }
 
 # MongoDB Version
 variable "mongodbatlas_mongodb_version" {
   type        = string
   description = "MongoDB Version"
-  default = "6.0"
+  default     = "6.0"
 }
 
 # IP Address Access
 variable "mongodbatlas_ip_address" {
-  type = string
+  type        = string
   description = "IP address used to access Atlas cluster"
-  default = "103.6.176.130"
+  default     = "103.6.176.130"
 }
 
 variable "mongodbatlas_db_username" {
@@ -145,8 +145,17 @@ variable "mongodbatlas_db_name" {
   default     = "fwd_testing"
 }
 
-variable "rds_sg_name" {
+variable "sg_name" {
   default     = "fwd-terraform-sg"
   description = "FWD SG name"
 }
 
+variable "lb_sg_name" {
+  default     = "fwd-terraform-sg-lb"
+  description = "FWD SG name"
+}
+
+variable "prj_domain" {
+  default     = "example.com"
+  description = "prj domain"
+}

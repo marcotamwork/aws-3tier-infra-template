@@ -10,10 +10,11 @@ terraform {
       version = "~> 4.0"
     } */
     mongodbatlas = {
-          source = "mongodb/mongodbatlas"
-          version = "1.11.0"
-        }
+      source  = "mongodb/mongodbatlas"
+      version = "1.11.0"
+    }
   }
-  backend "http" {
+  backend "local" {
+
   }
 }

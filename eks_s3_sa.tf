@@ -30,7 +30,7 @@ resource "aws_iam_policy" "s3_policy" {
           "s3:GetObjectVersion"
         ]
         Effect   = "Allow"
-        Resource = "arn:aws:s3:::YOUR_BUCKET/*"
+        Resource = "arn:aws:s3:::${aws_s3_bucket.s3.id}/*"
       },
     ]
   })
