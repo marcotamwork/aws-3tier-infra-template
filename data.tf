@@ -8,9 +8,27 @@ data "aws_eks_cluster_auth" "cluster" {
   name = module.eks.cluster_id
 }
 
-
 data "aws_s3_bucket" "s3" {
-  bucket = "fwd-smart-recruit-ipad-app-test"
+  bucket = var.s3_bucket_name
+}
+
+data "aws_iam_policy_document" "s3_alb_policy" {
+  statement {
+    principals {
+      type        = "*"
+      identifiers = ["*"]
+    }
+
+    actions = [
+      "s3:*Object",
+      "s3:ListBucket",
+    ]
+
+    resources = [
+      aws_s3_bucket.s3_alb.arn,
+      "${aws_s3_bucket.s3_alb.arn}/*",
+    ]
+  }
 }
 
 data "aws_iam_policy_document" "s3_policy" {
@@ -21,7 +39,7 @@ data "aws_iam_policy_document" "s3_policy" {
     }
 
     actions = [
-      "s3:GetObject",
+      "s3:*Object",
       "s3:ListBucket",
     ]
 
@@ -39,3 +57,5 @@ data "aws_instances" "nodes" {
   }
 
 }
+
+data "aws_caller_identity" "current" {}

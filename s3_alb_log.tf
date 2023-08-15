@@ -31,6 +31,6 @@ resource "aws_s3_bucket_acl" "s3_alb" {
 
 resource "aws_s3_bucket_policy" "s3_alb_policy" {
   bucket = aws_s3_bucket.s3_alb.id
-  policy = data.aws_iam_policy_document.s3_policy.json
+  policy = data.aws_iam_policy_document.s3_alb_policy.json
 }
 

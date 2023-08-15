@@ -70,4 +70,4 @@ spec:
             - --txt-owner-id=external-dns
           env:
             - name: AWS_DEFAULT_REGION
-              value: ap-northeast-1
+              value: ap-southeast-1

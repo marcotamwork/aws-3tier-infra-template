@@ -15,6 +15,6 @@ terraform {
     }
   }
   backend "local" {
-
+    path = "/Users/pamela.ty.shek/Desktop/fwd/terraform/state/terraform.tfstate"
   }
 }

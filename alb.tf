@@ -84,10 +84,17 @@ resource "aws_lb_target_group_attachment" "attachment" {
 resource "aws_lb_listener_rule" "lb_listener_rule" {
 
   listener_arn = aws_lb_listener.http_listener_443.arn
-
+    for_each = {
+    for pair in setproduct(keys(aws_lb_target_group.target_groups), data.aws_instances.nodes.ids) :
+    "${pair[0]}:${pair[1]}" => {
+      target_group = aws_lb_target_group.target_groups[pair[0]]
+      instance_id  = pair[1]
+    }
+  }
   action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.target_groups.arn #port 30200
+    target_group_arn = each.value.target_group.arn
+    #target_group_arn = aws_lb_target_group.target_groups.arn #port 30200
   }
   condition {
     host_header {

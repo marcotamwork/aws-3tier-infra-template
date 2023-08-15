@@ -17,7 +17,7 @@ module "s3_role" {
 }
 
 resource "aws_iam_policy" "s3_policy" {
-  name        = "FWD EKS s3 policy"
+  name        = "s3_policy"
   path        = "/"
   description = "FWD EKS s3 policy"
 

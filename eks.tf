@@ -68,3 +68,28 @@ module "eks" {
     Terraform   = "true"
   }
 }
+
+resource "aws_iam_role" "ebs_csi_role" {
+  name = "${var.env}-ebs-csi-role"
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRoleWithWebIdentity"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Federated = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/${module.eks.oidc_provider}"
+        }
+      },
+    ]
+  })
+}
+
+data "aws_iam_policy" "ebs_csi_policy" {
+  arn = "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+}
+resource "aws_iam_role_policy_attachment" "ebs_csi_policy" {
+  policy_arn = data.aws_iam_policy.ebs_csi_policy.arn
+  role       = aws_iam_role.ebs_csi_role.id
+}

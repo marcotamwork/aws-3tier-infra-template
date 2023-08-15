@@ -1,10 +1,10 @@
 variable "region" {
-  default     = "ap-northeast-1"
+  default     = "ap-northeast-3"
   description = "AWS region"
 }
 
 variable "cluster_name" {
-  default     = "fwd-terraform-eks-test"
+  default     = "fwd-test"
   description = "EKS Cluster name"
 }
 
@@ -37,7 +37,7 @@ variable "node_group" {
 variable "availability_zones" {
   description = "A list of public subnets inside the VPC"
   type        = list(string)
-  default     = ["ap-northeast-1a", "ap-northeast-1b"]
+  default     = ["ap-northeast-3a", "ap-northeast-3b"]
 }
 
 variable "vpc_cidr" {
@@ -76,14 +76,14 @@ variable "mongodbatlas_private_key" {
 variable "mongodbatlas_org_id" {
   type        = string
   description = "Atlas Organization ID"
-  default     = "Pamela's Org - 2023-02-16"
+  default     = "63ee019f52b32d71dc18a54d"
 }
 
 # Atlas Project Name
 variable "mongodbatlas_project_name" {
   type        = string
   description = "Atlas Project Name"
-  default     = "FWD_TEST"
+  default     = "FWD-TEST-1"
 }
 
 variable "mongodbatlas_environment" {
@@ -96,7 +96,7 @@ variable "mongodbatlas_environment" {
 variable "mongodbatlas_cluster_instance_size_name" {
   type        = string
   description = "Cluster instance size name"
-  default     = "M0"
+  default     = "M10"
 }
 
 # Cloud Provider to Host Atlas Cluster
@@ -110,7 +110,7 @@ variable "mongodbatlas_cloud_provider" {
 variable "mongodbatlas_region" {
   type        = string
   description = "Atlas region where resources will be created"
-  default     = "ap_northeast_1"
+  default     = "AP_NORTHEAST_3"
 }
 
 # MongoDB Version
@@ -158,4 +158,9 @@ variable "lb_sg_name" {
 variable "prj_domain" {
   default     = "example.com"
   description = "prj domain"
+}
+
+variable "s3_bucket_name" {
+  default     = "fwd-smart-recruit-ipad-app-1"
+  description = "S3 bucket"
 }
