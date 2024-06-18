@@ -1,8 +1,6 @@
 # Introduction
-This project is using Terraform to deploy AWS EKS service
+This is a terraform template to deploy AWS cloud service for intermediate-level projects.
 
-## Step
-1. All variables is store in "Devlopment" or "Production" and under "Environments" folder. Please modify the variables in variables.tf file if you need.
-2. Create a tag and the format must be "dev-0.0.1" or "pro-0.0.1"
-3. After create the tag, it will trigger pipeline to deploy to AWS
-4. You may need to manual cick the deploy button on the pipeline.
+# Description
+The Terraform template provisions cloud resources for a 3-tier architecture through IaC by Terraform to deploy the application in Kubernetes(EKS). Resource including VPC, EKS, MongoDB, ALB, SG, etc. The template doesn't follow any compliance standards but just basic security practices as a development environment template. If you are interested in further information on the compliance standards or changes for production environment, please contact me at 431-556-3882 or marcotam.work@gmail.com!
+

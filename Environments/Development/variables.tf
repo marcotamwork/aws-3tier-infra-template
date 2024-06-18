@@ -4,7 +4,7 @@ variable "region" {
 }
 
 variable "cluster_name" {
-  default     = "fwd-terraform-eks-test"
+  default     = "example-terraform-eks-test"
   description = "EKS Cluster name"
 }
 
@@ -76,14 +76,14 @@ variable "mongodbatlas_private_key" {
 variable "mongodbatlas_org_id" {
   type        = string
   description = "Atlas Organization ID"
-  default     = "Pamela's Org - 2023-02-16"
+  default     = "Marco's Org - 2023-02-16"
 }
 
 # Atlas Project Name
 variable "mongodbatlas_project_name" {
   type        = string
   description = "Atlas Project Name"
-  default     = "FWD_TEST"
+  default     = "example_TEST"
 }
 
 variable "mongodbatlas_environment" {
@@ -130,29 +130,29 @@ variable "mongodbatlas_ip_address" {
 variable "mongodbatlas_db_username" {
   type        = string
   description = "Atlas DB Username"
-  default     = "fwd"
+  default     = "example"
 }
 
 variable "mongodbatlas_db_password" {
   type        = string
   description = "Atlas DB password"
-  default     = "fwd"
+  default     = "example"
 }
 
 variable "mongodbatlas_db_name" {
   type        = string
   description = "Atlas DB name"
-  default     = "fwd_testing"
+  default     = "example_testing"
 }
 
 variable "sg_name" {
-  default     = "fwd-terraform-sg"
-  description = "FWD SG name"
+  default     = "example-terraform-sg"
+  description = "example SG name"
 }
 
 variable "lb_sg_name" {
-  default     = "fwd-terraform-sg-lb"
-  description = "FWD SG name"
+  default     = "example-terraform-sg-lb"
+  description = "example SG name"
 }
 
 variable "prj_domain" {

@@ -1,7 +1,7 @@
 module "s3_role" {
   source = "terraform-aws-modules/iam/aws//modules/iam-role-for-service-accounts-eks"
 
-  role_name = "s3-fwd-role"
+  role_name = "s3-example-role"
   role_policy_arns = {
     policy = aws_iam_policy.s3_policy.arn
   }
@@ -11,7 +11,7 @@ module "s3_role" {
   oidc_providers = {
     main = {
       provider_arn               = module.eks.oidc_provider_arn
-      namespace_service_accounts = ["sit:s3-fwd-sa"]
+      namespace_service_accounts = ["sit:s3-example-sa"]
     }
   }
 }
@@ -19,7 +19,7 @@ module "s3_role" {
 resource "aws_iam_policy" "s3_policy" {
   name        = "s3_policy"
   path        = "/"
-  description = "FWD EKS s3 policy"
+  description = "example EKS s3 policy"
 
   policy = jsonencode({
     Version = "2012-10-17"
